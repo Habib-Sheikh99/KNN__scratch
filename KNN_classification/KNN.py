@@ -80,5 +80,5 @@ print("Accuracy : ", int(accuracy_score(ytest, prediction)*100), '%')
 
 ### Test Result ###
 
-################### ACCURACY : 
-#                            ~ 
+################### ACCURACY: 0.9230769230769231
+#%#%#%#%#%#%#%#%#%# Accuracy ~ 92 %
