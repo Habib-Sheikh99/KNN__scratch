@@ -1,6 +1,6 @@
-import numpy as np  
+import numpy as np                                                                          ### Results are at the bottom of the file!
 import pandas as pd      # We only need these libraries as the algorithm is from scratch
-#%%
+
 
 class KNN:
     def __init__(self, n_neighbors:int=3):
@@ -36,21 +36,21 @@ class KNN:
         self.X_test=np.array(X_test)         
         return np.array([self.predict_class(row)for row in self.X_test])
          
-#%%
-### TESTING
+### TESTING ###
 
 from sklearn.datasets import load_iris
 from sklearn.metrics import accuracy_score
 from matplotlib import pyplot as plt
 import seaborn as sns
 sns.set()
-#%%
+
 dataset = load_iris()
+
 X, y = dataset.data, dataset.target
-#%%
 X, y = pd.DataFrame(X), pd.Series(y)
-#%%
+
 from sklearn.model_selection import train_test_split
+
 xtrain, xtest, ytrain, ytest = train_test_split(
     X, y,
     test_size=0.254,
@@ -58,21 +58,20 @@ xtrain, xtest, ytrain, ytest = train_test_split(
     stratify=y
     )
 
-#%%
 xtrain = xtrain.to_numpy()
 xtest = xtest.to_numpy()
 ytrain = ytrain.to_numpy()
 ytest = ytest.to_numpy()
-#%%
+
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 xtrain = scaler.fit_transform(xtrain)
 xtest = scaler.transform(xtest)
-#%%
+
 system=KNN()
 system.fit(xtrain, ytrain)
 prediction=(system.predict(xtest))
-#%%
+
 print("Accuracy : ", accuracy_score(ytest, prediction))
 print("Accuracy : ", int(accuracy_score(ytest, prediction)*100), '%')
 
